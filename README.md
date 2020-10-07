@@ -8,6 +8,7 @@
  * `cdk deploy`      Deploy the Stack
  * 
  
+Manually modify the security group of the LambdaIO to allow ingress traffic.
 
 
 # Deleting/Destroying

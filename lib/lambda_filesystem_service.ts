@@ -41,6 +41,10 @@ export class LambdaMain extends core.Construct {
   },
 });
 
+   // Create a custome security group in the newly created VPC and allow ingress and egress traffic fromo 0.0.0.0/0 for demo purposes     
+     const securitygroup = new ec2.SecurityGroup(this, 'SecurityGroup', {vpc: myVpc,});
+     securitygroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.allTraffic() );
+
     const handler = new lambda.Function(this, "LambdaFileSystem", {
       runtime: lambda.Runtime.NODEJS_12_X,
       code: lambda.Code.asset("resources"),
@@ -48,6 +52,7 @@ export class LambdaMain extends core.Construct {
       layers: [layer],
       timeout: duration,
       vpc: myVpc,
+      securityGroups: [securitygroup],
       filesystem: lambda.FileSystem.fromEfsAccessPoint(accessPoint, '/mnt/lambda'),
       environment: {
         BUCKET: bucket.bucketName

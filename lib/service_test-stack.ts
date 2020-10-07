@@ -8,9 +8,9 @@ export class ServiceTestStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-//    new lambda_main_service.LambdaMain(this, 'lambdaMain');
-//    new lambda_cpu_service.LambdaMain(this, 'lambdaCPU');
-//    new lambda_memory_service.LambdaMain(this, 'lambdaMemory');
+    new lambda_main_service.LambdaMain(this, 'lambdaMain');
+    new lambda_cpu_service.LambdaMain(this, 'lambdaCPU');
+    new lambda_memory_service.LambdaMain(this, 'lambdaMemory');
     new lambda_filesystem_service.LambdaMain(this, 'lambdaIO');
     
   }

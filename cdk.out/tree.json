@@ -12,6 +12,1461 @@
         "id": "ServiceTestStack",
         "path": "ServiceTestStack",
         "children": {
+          "lambdaMain": {
+            "id": "lambdaMain",
+            "path": "ServiceTestStack/lambdaMain",
+            "children": {
+              "LambdaStore": {
+                "id": "LambdaStore",
+                "path": "ServiceTestStack/lambdaMain/LambdaStore",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMain/LambdaStore/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                      "aws:cdk:cloudformation:props": {}
+                    }
+                  },
+                  "Notifications": {
+                    "id": "Notifications",
+                    "path": "ServiceTestStack/lambdaMain/LambdaStore/Notifications"
+                  }
+                }
+              },
+              "LayerFromArn": {
+                "id": "LayerFromArn",
+                "path": "ServiceTestStack/lambdaMain/LayerFromArn"
+              },
+              "LambdaMain": {
+                "id": "LambdaMain",
+                "path": "ServiceTestStack/lambdaMain/LambdaMain",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "ServiceTestStack/lambdaMain/LambdaMain/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMain/LambdaMain/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "ServiceTestStack/lambdaMain/LambdaMain/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaMain/LambdaMain/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "s3:GetObject*",
+                                        "s3:GetBucket*",
+                                        "s3:List*",
+                                        "s3:DeleteObject*",
+                                        "s3:PutObject*",
+                                        "s3:Abort*"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": [
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaMainLambdaStoreE7C10A2C",
+                                            "Arn"
+                                          ]
+                                        },
+                                        {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              {
+                                                "Fn::GetAtt": [
+                                                  "lambdaMainLambdaStoreE7C10A2C",
+                                                  "Arn"
+                                                ]
+                                              },
+                                              "/*"
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "lambdaMainLambdaMainServiceRoleDefaultPolicy0F7A6C89",
+                                "roles": [
+                                  {
+                                    "Ref": "lambdaMainLambdaMainServiceRole01E6613C"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "ServiceTestStack/lambdaMain/LambdaMain/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "ServiceTestStack/lambdaMain/LambdaMain/Code/Stage"
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "ServiceTestStack/lambdaMain/LambdaMain/Code/AssetBucket"
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMain/LambdaMain/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3Bucket5E1F83F3"
+                          },
+                          "s3Key": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                {
+                                  "Fn::Select": [
+                                    0,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Fn::Select": [
+                                    1,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ]
+                          }
+                        },
+                        "handler": "lambda_main.handler",
+                        "role": {
+                          "Fn::GetAtt": [
+                            "lambdaMainLambdaMainServiceRole01E6613C",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "nodejs12.x",
+                        "environment": {
+                          "variables": {
+                            "BUCKET": {
+                              "Ref": "lambdaMainLambdaStoreE7C10A2C"
+                            }
+                          }
+                        },
+                        "layers": [
+                          "arn:aws:lambda:us-west-2:907985872988:layer:LambdaInsightsExtensionBeta:1"
+                        ],
+                        "timeout": 900
+                      }
+                    }
+                  }
+                }
+              },
+              "helloworld-api": {
+                "id": "helloworld-api",
+                "path": "ServiceTestStack/lambdaMain/helloworld-api",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "Default Vanilla API",
+                        "name": "Default Vanilla API"
+                      }
+                    }
+                  },
+                  "CloudWatchRole": {
+                    "id": "CloudWatchRole",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/CloudWatchRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMain/helloworld-api/CloudWatchRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "apigateway.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Account": {
+                    "id": "Account",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/Account",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                      "aws:cdk:cloudformation:props": {
+                        "cloudWatchRoleArn": {
+                          "Fn::GetAtt": [
+                            "lambdaMainhelloworldapiCloudWatchRole34677E57",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "Deployment": {
+                    "id": "Deployment",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/Deployment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMain/helloworld-api/Deployment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaMainhelloworldapi5A77D1BA"
+                            },
+                            "description": "Automatically created by the RestApi construct"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "DeploymentStage.prod": {
+                    "id": "DeploymentStage.prod",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/DeploymentStage.prod",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMain/helloworld-api/DeploymentStage.prod/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaMainhelloworldapi5A77D1BA"
+                            },
+                            "deploymentId": {
+                              "Ref": "lambdaMainhelloworldapiDeployment151C9CCD59512c10220dcd1a1d14b1dfbe7fc1d6"
+                            },
+                            "stageName": "prod"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Endpoint": {
+                    "id": "Endpoint",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/Endpoint"
+                  },
+                  "Default": {
+                    "id": "Default",
+                    "path": "ServiceTestStack/lambdaMain/helloworld-api/Default",
+                    "children": {
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "ServiceTestStack/lambdaMain/helloworld-api/Default/ANY",
+                        "children": {
+                          "ApiPermission.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..": {
+                            "id": "ApiPermission.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..",
+                            "path": "ServiceTestStack/lambdaMain/helloworld-api/Default/ANY/ApiPermission.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMainLambdaMain6A167A80",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaMainhelloworldapi5A77D1BA"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "lambdaMainhelloworldapiDeploymentStageprodFA411312"
+                                      },
+                                      "/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "ApiPermission.Test.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..": {
+                            "id": "ApiPermission.Test.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..",
+                            "path": "ServiceTestStack/lambdaMain/helloworld-api/Default/ANY/ApiPermission.Test.ServiceTestStacklambdaMainhelloworldapiA931BDB8.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMainLambdaMain6A167A80",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaMainhelloworldapi5A77D1BA"
+                                      },
+                                      "/test-invoke-stage/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaMain/helloworld-api/Default/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMainhelloworldapi5A77D1BA",
+                                    "RootResourceId"
+                                  ]
+                                },
+                                "restApiId": {
+                                  "Ref": "lambdaMainhelloworldapi5A77D1BA"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaMainLambdaMain6A167A80",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "AssetParameters": {
+            "id": "AssetParameters",
+            "path": "ServiceTestStack/AssetParameters",
+            "children": {
+              "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6": {
+                "id": "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
+                "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3Bucket"
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3VersionKey"
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/ArtifactHash"
+                  }
+                }
+              }
+            }
+          },
+          "lambdaCPU": {
+            "id": "lambdaCPU",
+            "path": "ServiceTestStack/lambdaCPU",
+            "children": {
+              "LambdaStore": {
+                "id": "LambdaStore",
+                "path": "ServiceTestStack/lambdaCPU/LambdaStore",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaCPU/LambdaStore/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                      "aws:cdk:cloudformation:props": {}
+                    }
+                  },
+                  "Notifications": {
+                    "id": "Notifications",
+                    "path": "ServiceTestStack/lambdaCPU/LambdaStore/Notifications"
+                  }
+                }
+              },
+              "LayerFromArn": {
+                "id": "LayerFromArn",
+                "path": "ServiceTestStack/lambdaCPU/LayerFromArn"
+              },
+              "LambdaCPU": {
+                "id": "LambdaCPU",
+                "path": "ServiceTestStack/lambdaCPU/LambdaCPU",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "ServiceTestStack/lambdaCPU/LambdaCPU/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaCPU/LambdaCPU/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "ServiceTestStack/lambdaCPU/LambdaCPU/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaCPU/LambdaCPU/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "s3:GetObject*",
+                                        "s3:GetBucket*",
+                                        "s3:List*",
+                                        "s3:DeleteObject*",
+                                        "s3:PutObject*",
+                                        "s3:Abort*"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": [
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaCPULambdaStoreFD9DE0F4",
+                                            "Arn"
+                                          ]
+                                        },
+                                        {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              {
+                                                "Fn::GetAtt": [
+                                                  "lambdaCPULambdaStoreFD9DE0F4",
+                                                  "Arn"
+                                                ]
+                                              },
+                                              "/*"
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "lambdaCPULambdaCPUServiceRoleDefaultPolicy4AF1E008",
+                                "roles": [
+                                  {
+                                    "Ref": "lambdaCPULambdaCPUServiceRole5817ED20"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "ServiceTestStack/lambdaCPU/LambdaCPU/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "ServiceTestStack/lambdaCPU/LambdaCPU/Code/Stage"
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "ServiceTestStack/lambdaCPU/LambdaCPU/Code/AssetBucket"
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaCPU/LambdaCPU/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3Bucket5E1F83F3"
+                          },
+                          "s3Key": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                {
+                                  "Fn::Select": [
+                                    0,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Fn::Select": [
+                                    1,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ]
+                          }
+                        },
+                        "handler": "lambda_cpu.handler",
+                        "role": {
+                          "Fn::GetAtt": [
+                            "lambdaCPULambdaCPUServiceRole5817ED20",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "nodejs12.x",
+                        "environment": {
+                          "variables": {
+                            "BUCKET": {
+                              "Ref": "lambdaCPULambdaStoreFD9DE0F4"
+                            }
+                          }
+                        },
+                        "layers": [
+                          "arn:aws:lambda:us-west-2:907985872988:layer:LambdaInsightsExtensionBeta:1"
+                        ],
+                        "timeout": 900
+                      }
+                    }
+                  }
+                }
+              },
+              "helloworld-api-cpu": {
+                "id": "helloworld-api-cpu",
+                "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "Default API - Test Service - CPU",
+                        "name": "Default API - CPU "
+                      }
+                    }
+                  },
+                  "CloudWatchRole": {
+                    "id": "CloudWatchRole",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/CloudWatchRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/CloudWatchRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "apigateway.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Account": {
+                    "id": "Account",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Account",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                      "aws:cdk:cloudformation:props": {
+                        "cloudWatchRoleArn": {
+                          "Fn::GetAtt": [
+                            "lambdaCPUhelloworldapicpuCloudWatchRole3C5DB49D",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "Deployment": {
+                    "id": "Deployment",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Deployment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Deployment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
+                            },
+                            "description": "Automatically created by the RestApi construct"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "DeploymentStage.prod": {
+                    "id": "DeploymentStage.prod",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/DeploymentStage.prod",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/DeploymentStage.prod/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
+                            },
+                            "deploymentId": {
+                              "Ref": "lambdaCPUhelloworldapicpuDeployment5F19FF9B26e34f506e3e012e8821667ddcf20571"
+                            },
+                            "stageName": "prod"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Endpoint": {
+                    "id": "Endpoint",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Endpoint"
+                  },
+                  "Default": {
+                    "id": "Default",
+                    "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Default",
+                    "children": {
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Default/ANY",
+                        "children": {
+                          "ApiPermission.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..": {
+                            "id": "ApiPermission.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..",
+                            "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Default/ANY/ApiPermission.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaCPULambdaCPU8B542329",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "lambdaCPUhelloworldapicpuDeploymentStageprod2BCCC273"
+                                      },
+                                      "/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "ApiPermission.Test.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..": {
+                            "id": "ApiPermission.Test.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..",
+                            "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Default/ANY/ApiPermission.Test.ServiceTestStacklambdaCPUhelloworldapicpu40694E87.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaCPULambdaCPU8B542329",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
+                                      },
+                                      "/test-invoke-stage/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaCPU/helloworld-api-cpu/Default/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Fn::GetAtt": [
+                                    "lambdaCPUhelloworldapicpuBDE3BB60",
+                                    "RootResourceId"
+                                  ]
+                                },
+                                "restApiId": {
+                                  "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaCPULambdaCPU8B542329",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "lambdaMemory": {
+            "id": "lambdaMemory",
+            "path": "ServiceTestStack/lambdaMemory",
+            "children": {
+              "LambdaStore": {
+                "id": "LambdaStore",
+                "path": "ServiceTestStack/lambdaMemory/LambdaStore",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMemory/LambdaStore/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                      "aws:cdk:cloudformation:props": {}
+                    }
+                  },
+                  "Notifications": {
+                    "id": "Notifications",
+                    "path": "ServiceTestStack/lambdaMemory/LambdaStore/Notifications"
+                  }
+                }
+              },
+              "LayerFromArn": {
+                "id": "LayerFromArn",
+                "path": "ServiceTestStack/lambdaMemory/LayerFromArn"
+              },
+              "LambdaMemory": {
+                "id": "LambdaMemory",
+                "path": "ServiceTestStack/lambdaMemory/LambdaMemory",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "ServiceTestStack/lambdaMemory/LambdaMemory/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMemory/LambdaMemory/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "ServiceTestStack/lambdaMemory/LambdaMemory/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaMemory/LambdaMemory/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "s3:GetObject*",
+                                        "s3:GetBucket*",
+                                        "s3:List*",
+                                        "s3:DeleteObject*",
+                                        "s3:PutObject*",
+                                        "s3:Abort*"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": [
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaMemoryLambdaStore38402BFC",
+                                            "Arn"
+                                          ]
+                                        },
+                                        {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              {
+                                                "Fn::GetAtt": [
+                                                  "lambdaMemoryLambdaStore38402BFC",
+                                                  "Arn"
+                                                ]
+                                              },
+                                              "/*"
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "lambdaMemoryLambdaMemoryServiceRoleDefaultPolicyF4C64437",
+                                "roles": [
+                                  {
+                                    "Ref": "lambdaMemoryLambdaMemoryServiceRole289E340D"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "ServiceTestStack/lambdaMemory/LambdaMemory/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "ServiceTestStack/lambdaMemory/LambdaMemory/Code/Stage"
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "ServiceTestStack/lambdaMemory/LambdaMemory/Code/AssetBucket"
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMemory/LambdaMemory/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3Bucket5E1F83F3"
+                          },
+                          "s3Key": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                {
+                                  "Fn::Select": [
+                                    0,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Fn::Select": [
+                                    1,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ]
+                          }
+                        },
+                        "handler": "lambda_memory.handler",
+                        "role": {
+                          "Fn::GetAtt": [
+                            "lambdaMemoryLambdaMemoryServiceRole289E340D",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "nodejs12.x",
+                        "environment": {
+                          "variables": {
+                            "BUCKET": {
+                              "Ref": "lambdaMemoryLambdaStore38402BFC"
+                            }
+                          }
+                        },
+                        "layers": [
+                          "arn:aws:lambda:us-west-2:907985872988:layer:LambdaInsightsExtensionBeta:1"
+                        ],
+                        "timeout": 900
+                      }
+                    }
+                  }
+                }
+              },
+              "helloworld-api-memory": {
+                "id": "helloworld-api-memory",
+                "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "Default API - Test Service - MEMORY",
+                        "name": "Default API - MEMORY"
+                      }
+                    }
+                  },
+                  "CloudWatchRole": {
+                    "id": "CloudWatchRole",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/CloudWatchRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/CloudWatchRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "apigateway.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Account": {
+                    "id": "Account",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Account",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                      "aws:cdk:cloudformation:props": {
+                        "cloudWatchRoleArn": {
+                          "Fn::GetAtt": [
+                            "lambdaMemoryhelloworldapimemoryCloudWatchRole710C94CE",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "Deployment": {
+                    "id": "Deployment",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Deployment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Deployment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
+                            },
+                            "description": "Automatically created by the RestApi construct"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "DeploymentStage.prod": {
+                    "id": "DeploymentStage.prod",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/DeploymentStage.prod",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/DeploymentStage.prod/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                          "aws:cdk:cloudformation:props": {
+                            "restApiId": {
+                              "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
+                            },
+                            "deploymentId": {
+                              "Ref": "lambdaMemoryhelloworldapimemoryDeploymentB79FF106b6a13b00a40e606e637003be9563e5fc"
+                            },
+                            "stageName": "prod"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Endpoint": {
+                    "id": "Endpoint",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Endpoint"
+                  },
+                  "Default": {
+                    "id": "Default",
+                    "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Default",
+                    "children": {
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Default/ANY",
+                        "children": {
+                          "ApiPermission.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..": {
+                            "id": "ApiPermission.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..",
+                            "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Default/ANY/ApiPermission.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMemoryLambdaMemory448FFFEC",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "lambdaMemoryhelloworldapimemoryDeploymentStageprod0F05745F"
+                                      },
+                                      "/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "ApiPermission.Test.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..": {
+                            "id": "ApiPermission.Test.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..",
+                            "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Default/ANY/ApiPermission.Test.ServiceTestStacklambdaMemoryhelloworldapimemory1EB16702.ANY..",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMemoryLambdaMemory448FFFEC",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
+                                      },
+                                      "/test-invoke-stage/*/"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ServiceTestStack/lambdaMemory/helloworld-api-memory/Default/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Fn::GetAtt": [
+                                    "lambdaMemoryhelloworldapimemoryFE57E6FF",
+                                    "RootResourceId"
+                                  ]
+                                },
+                                "restApiId": {
+                                  "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "lambdaMemoryLambdaMemory448FFFEC",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           "lambdaIO": {
             "id": "lambdaIO",
             "path": "ServiceTestStack/lambdaIO",
@@ -1283,30 +2738,6 @@
                         }
                       }
                     }
-                  }
-                }
-              }
-            }
-          },
-          "AssetParameters": {
-            "id": "AssetParameters",
-            "path": "ServiceTestStack/AssetParameters",
-            "children": {
-              "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6": {
-                "id": "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
-                "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
-                "children": {
-                  "S3Bucket": {
-                    "id": "S3Bucket",
-                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3Bucket"
-                  },
-                  "S3VersionKey": {
-                    "id": "S3VersionKey",
-                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3VersionKey"
-                  },
-                  "ArtifactHash": {
-                    "id": "ArtifactHash",
-                    "path": "ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/ArtifactHash"
                   }
                 }
               }

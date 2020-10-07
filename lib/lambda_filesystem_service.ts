@@ -28,9 +28,7 @@ export class LambdaMain extends core.Construct {
      
      // create a new access point from the filesystem
     const accessPoint = fileSystem.addAccessPoint('AccessPoint', {
-  // set /export/lambda as the root of the access point
-     path: '/export/lambda',
-  // as /export/lambda does not exist in a new efs filesystem, the efs will create the directory with the following createAcl
+     path: '/efs',
      createAcl: {
      ownerUid: '1000',
      ownerGid: '1000',

@@ -18,13 +18,13 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc",
-              "id": "242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc",
+              "path": "asset.6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
+              "id": "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
               "packaging": "zip",
-              "sourceHash": "242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc",
-              "s3BucketParameter": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcS3BucketB25D7EE0",
-              "s3KeyParameter": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcS3VersionKeyE9075AE7",
-              "artifactHashParameter": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcArtifactHash920119BB"
+              "sourceHash": "6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6",
+              "s3BucketParameter": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3Bucket5E1F83F3",
+              "s3KeyParameter": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700",
+              "artifactHashParameter": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6ArtifactHash49538E96"
             },
             "trace": [
               "ConstructNode.addMetadata (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/construct-compat.ts:411:92)",
@@ -456,10 +456,10 @@
             ]
           }
         ],
-        "/ServiceTestStack/AssetParameters/242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc/S3Bucket": [
+        "/ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcS3BucketB25D7EE0",
+            "data": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3Bucket5E1F83F3",
             "trace": [
               "new FileAssetParameters (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
               "LegacyStackSynthesizer.doAddFileAsset (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:147:16)",
@@ -492,10 +492,10 @@
             ]
           }
         ],
-        "/ServiceTestStack/AssetParameters/242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc/S3VersionKey": [
+        "/ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcS3VersionKeyE9075AE7",
+            "data": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6S3VersionKey145EB700",
             "trace": [
               "new FileAssetParameters (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
               "LegacyStackSynthesizer.doAddFileAsset (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:147:16)",
@@ -528,10 +528,10 @@
             ]
           }
         ],
-        "/ServiceTestStack/AssetParameters/242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bc/ArtifactHash": [
+        "/ServiceTestStack/AssetParameters/6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters242c8cd8e99862f3042d7fa587245f4ed29a8b19c63f2d0f41c23b72887cc8bcArtifactHash920119BB",
+            "data": "AssetParameters6b239c18372379ffe355bcb955b000d3951069633eebfa04a0cfb8f71ebc65e6ArtifactHash49538E96",
             "trace": [
               "new FileAssetParameters (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
               "LegacyStackSynthesizer.doAddFileAsset (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:147:16)",
@@ -2228,7 +2228,7 @@
               "Connections.allowDefaultPortFrom (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:203:10)",
               "Function.configureVpc (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:852:45)",
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:609:23)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2350,7 +2350,7 @@
             "trace": [
               "new Role (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:539:31)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2384,7 +2384,7 @@
               "Function.config.policies.forEach.p (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:550:22)",
               "Array.forEach (<anonymous>)",
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:549:25)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2424,7 +2424,7 @@
               "Connections.allowDefaultPortFrom (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:203:10)",
               "Function.configureVpc (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:852:45)",
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:609:23)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2455,7 +2455,7 @@
               "new SecurityGroup (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:371:26)",
               "Function.configureVpc (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:840:52)",
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:609:23)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2484,7 +2484,7 @@
             "data": "lambdaIOLambdaFileSystemD0DC67D0",
             "trace": [
               "new Function (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-lambda/lib/function.ts:593:35)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:46:21)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:44:21)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2513,7 +2513,7 @@
             "data": "lambdaIOhelloworldapiIO512496F6",
             "trace": [
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:589:22)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2544,7 +2544,7 @@
               "new Role (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
               "RestApi.configureCloudWatchRole (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:396:18)",
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:606:12)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2574,7 +2574,7 @@
             "trace": [
               "RestApi.configureCloudWatchRole (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:401:22)",
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:606:12)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2605,7 +2605,7 @@
               "new Deployment (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/deployment.ts:71:21)",
               "RestApi.configureDeployment (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:412:32)",
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:609:10)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2636,7 +2636,7 @@
               "new Stage (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/stage.ts:240:22)",
               "RestApi.configureDeployment (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:422:30)",
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:609:10)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2666,7 +2666,7 @@
             "trace": [
               "RestApi.configureDeployment (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:427:7)",
               "new RestApi (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:609:10)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:61:17)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:59:17)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2698,7 +2698,7 @@
               "LambdaIntegration.bind (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:61:18)",
               "new Method (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
               "RootResource.addMethod (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:68:14)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:66:14)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2730,7 +2730,7 @@
               "LambdaIntegration.bind (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:69:20)",
               "new Method (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
               "RootResource.addMethod (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:68:14)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:66:14)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",
@@ -2760,7 +2760,7 @@
             "trace": [
               "new Method (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:215:22)",
               "RootResource.addMethod (/home/ec2-user/environment/lambda-insights-cdk/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
-              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:68:14)",
+              "new LambdaMain (/home/ec2-user/environment/lambda-insights-cdk/lib/lambda_filesystem_service.ts:66:14)",
               "new ServiceTestStack (/home/ec2-user/environment/lambda-insights-cdk/lib/service_test-stack.ts:14:5)",
               "Object.<anonymous> (/home/ec2-user/environment/lambda-insights-cdk/bin/service_test.ts:7:1)",
               "Module._compile (internal/modules/cjs/loader.js:778:30)",

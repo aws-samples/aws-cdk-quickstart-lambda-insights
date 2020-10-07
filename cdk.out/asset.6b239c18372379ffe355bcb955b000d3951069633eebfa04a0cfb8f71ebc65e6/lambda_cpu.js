@@ -3,25 +3,7 @@ const AWS = require('aws-sdk');
 
 exports.handler = function(event, context, callback) {
 
-// Code block to consume memory during runtime of the lambda
-var a = [];
-var b = [];
-
-class SimpleClass {
-  constructor(text){
-    this.text = text;
-  }
-}
-
-  var c = Math.random().toString();
-  var d = new SimpleClass(c);
-
-for (var p = 0; p < 100000; p++) {
-    a.push(d);
-  b.push(d);
-} 
-
-//fibo(40);
+fibo(40);
 console.log(event);
 const response = {
     statusCode: 200,
@@ -39,3 +21,12 @@ function fibo(n) {
         return 1;
     else   return fibo(n - 2) + fibo(n - 1);
 }
+
+
+
+
+
+
+
+
+

@@ -319,7 +319,7 @@
                               "Ref": "lambdaMainhelloworldapi5A77D1BA"
                             },
                             "deploymentId": {
-                              "Ref": "lambdaMainhelloworldapiDeployment151C9CCD59512c10220dcd1a1d14b1dfbe7fc1d6"
+                              "Ref": "lambdaMainhelloworldapiDeployment151C9CCDcda776d4b97aed75917bbc36c27c4f7f"
                             },
                             "stageName": "prod"
                           }
@@ -361,15 +361,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaMainhelloworldapi5A77D1BA"
                                       },
@@ -406,15 +398,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaMainhelloworldapi5A77D1BA"
                                       },
@@ -452,11 +436,7 @@
                                         {
                                           "Ref": "AWS::Partition"
                                         },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
+                                        ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
                                         {
                                           "Fn::GetAtt": [
                                             "lambdaMainLambdaMain6A167A80",
@@ -811,7 +791,7 @@
                               "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
                             },
                             "deploymentId": {
-                              "Ref": "lambdaCPUhelloworldapicpuDeployment5F19FF9B26e34f506e3e012e8821667ddcf20571"
+                              "Ref": "lambdaCPUhelloworldapicpuDeployment5F19FF9B09fbd4edb1ef64708992de78d36b28e4"
                             },
                             "stageName": "prod"
                           }
@@ -853,15 +833,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
                                       },
@@ -898,15 +870,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaCPUhelloworldapicpuBDE3BB60"
                                       },
@@ -944,11 +908,7 @@
                                         {
                                           "Ref": "AWS::Partition"
                                         },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
+                                        ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
                                         {
                                           "Fn::GetAtt": [
                                             "lambdaCPULambdaCPU8B542329",
@@ -1279,7 +1239,7 @@
                               "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
                             },
                             "deploymentId": {
-                              "Ref": "lambdaMemoryhelloworldapimemoryDeploymentB79FF106b6a13b00a40e606e637003be9563e5fc"
+                              "Ref": "lambdaMemoryhelloworldapimemoryDeploymentB79FF1060d9e3c38b70b1870cd46acfb6826617d"
                             },
                             "stageName": "prod"
                           }
@@ -1321,15 +1281,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
                                       },
@@ -1366,15 +1318,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaMemoryhelloworldapimemoryFE57E6FF"
                                       },
@@ -1412,11 +1356,7 @@
                                         {
                                           "Ref": "AWS::Partition"
                                         },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
+                                        ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
                                         {
                                           "Fn::GetAtt": [
                                             "lambdaMemoryLambdaMemory448FFFEC",
@@ -1486,7 +1426,8 @@
                         },
                         "managedPolicyArns": [
                           "arn:aws:iam::aws:policy/CloudWatchLambdaInsightsExecutionRolePolicy",
-                          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                          "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
                         ]
                       }
                     }
@@ -1515,15 +1456,7 @@
                                             {
                                               "Ref": "AWS::Partition"
                                             },
-                                            ":elasticfilesystem:",
-                                            {
-                                              "Ref": "AWS::Region"
-                                            },
-                                            ":",
-                                            {
-                                              "Ref": "AWS::AccountId"
-                                            },
-                                            ":access-point/",
+                                            ":elasticfilesystem:us-west-2:878687028155:access-point/",
                                             {
                                               "Ref": "lambdaIOMyEfsFileSystemAccessPointDECC5D54"
                                             }
@@ -1546,15 +1479,7 @@
                                         {
                                           "Ref": "AWS::Partition"
                                         },
-                                        ":elasticfilesystem:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":",
-                                        {
-                                          "Ref": "AWS::AccountId"
-                                        },
-                                        ":file-system/",
+                                        ":elasticfilesystem:us-west-2:878687028155:file-system/",
                                         {
                                           "Ref": "lambdaIOMyEfsFileSystemBA84953E"
                                         }
@@ -1648,18 +1573,11 @@
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                           "aws:cdk:cloudformation:props": {
-                            "cidrBlock": "10.0.0.0/18",
+                            "cidrBlock": "10.0.0.0/19",
                             "vpcId": {
                               "Ref": "lambdaIOVPC5F5AB3BC"
                             },
-                            "availabilityZone": {
-                              "Fn::Select": [
-                                0,
-                                {
-                                  "Fn::GetAZs": ""
-                                }
-                              ]
-                            },
+                            "availabilityZone": "us-west-2a",
                             "mapPublicIpOnLaunch": true,
                             "tags": [
                               {
@@ -1783,18 +1701,11 @@
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                           "aws:cdk:cloudformation:props": {
-                            "cidrBlock": "10.0.64.0/18",
+                            "cidrBlock": "10.0.32.0/19",
                             "vpcId": {
                               "Ref": "lambdaIOVPC5F5AB3BC"
                             },
-                            "availabilityZone": {
-                              "Fn::Select": [
-                                1,
-                                {
-                                  "Fn::GetAZs": ""
-                                }
-                              ]
-                            },
+                            "availabilityZone": "us-west-2b",
                             "mapPublicIpOnLaunch": true,
                             "tags": [
                               {
@@ -1908,6 +1819,134 @@
                       }
                     }
                   },
+                  "PublicSubnet3": {
+                    "id": "PublicSubnet3",
+                    "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3",
+                    "children": {
+                      "Subnet": {
+                        "id": "Subnet",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/Subnet",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                          "aws:cdk:cloudformation:props": {
+                            "cidrBlock": "10.0.64.0/19",
+                            "vpcId": {
+                              "Ref": "lambdaIOVPC5F5AB3BC"
+                            },
+                            "availabilityZone": "us-west-2c",
+                            "mapPublicIpOnLaunch": true,
+                            "tags": [
+                              {
+                                "key": "aws-cdk:subnet-name",
+                                "value": "Public"
+                              },
+                              {
+                                "key": "aws-cdk:subnet-type",
+                                "value": "Public"
+                              },
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Acl": {
+                        "id": "Acl",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/Acl"
+                      },
+                      "RouteTable": {
+                        "id": "RouteTable",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/RouteTable",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                          "aws:cdk:cloudformation:props": {
+                            "vpcId": {
+                              "Ref": "lambdaIOVPC5F5AB3BC"
+                            },
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "RouteTableAssociation": {
+                        "id": "RouteTableAssociation",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/RouteTableAssociation",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                          "aws:cdk:cloudformation:props": {
+                            "routeTableId": {
+                              "Ref": "lambdaIOVPCPublicSubnet3RouteTableF5F456BD"
+                            },
+                            "subnetId": {
+                              "Ref": "lambdaIOVPCPublicSubnet3SubnetAA896229"
+                            }
+                          }
+                        }
+                      },
+                      "DefaultRoute": {
+                        "id": "DefaultRoute",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/DefaultRoute",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                          "aws:cdk:cloudformation:props": {
+                            "routeTableId": {
+                              "Ref": "lambdaIOVPCPublicSubnet3RouteTableF5F456BD"
+                            },
+                            "destinationCidrBlock": "0.0.0.0/0",
+                            "gatewayId": {
+                              "Ref": "lambdaIOVPCIGW103022A3"
+                            }
+                          }
+                        }
+                      },
+                      "EIP": {
+                        "id": "EIP",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/EIP",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                          "aws:cdk:cloudformation:props": {
+                            "domain": "vpc",
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "NATGateway": {
+                        "id": "NATGateway",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3/NATGateway",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                          "aws:cdk:cloudformation:props": {
+                            "allocationId": {
+                              "Fn::GetAtt": [
+                                "lambdaIOVPCPublicSubnet3EIP5346C1E1",
+                                "AllocationId"
+                              ]
+                            },
+                            "subnetId": {
+                              "Ref": "lambdaIOVPCPublicSubnet3SubnetAA896229"
+                            },
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PublicSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
                   "PrivateSubnet1": {
                     "id": "PrivateSubnet1",
                     "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet1",
@@ -1918,18 +1957,11 @@
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                           "aws:cdk:cloudformation:props": {
-                            "cidrBlock": "10.0.128.0/18",
+                            "cidrBlock": "10.0.96.0/19",
                             "vpcId": {
                               "Ref": "lambdaIOVPC5F5AB3BC"
                             },
-                            "availabilityZone": {
-                              "Fn::Select": [
-                                0,
-                                {
-                                  "Fn::GetAZs": ""
-                                }
-                              ]
-                            },
+                            "availabilityZone": "us-west-2a",
                             "mapPublicIpOnLaunch": false,
                             "tags": [
                               {
@@ -2013,18 +2045,11 @@
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                           "aws:cdk:cloudformation:props": {
-                            "cidrBlock": "10.0.192.0/18",
+                            "cidrBlock": "10.0.128.0/19",
                             "vpcId": {
                               "Ref": "lambdaIOVPC5F5AB3BC"
                             },
-                            "availabilityZone": {
-                              "Fn::Select": [
-                                1,
-                                {
-                                  "Fn::GetAZs": ""
-                                }
-                              ]
-                            },
+                            "availabilityZone": "us-west-2b",
                             "mapPublicIpOnLaunch": false,
                             "tags": [
                               {
@@ -2092,6 +2117,94 @@
                             "destinationCidrBlock": "0.0.0.0/0",
                             "natGatewayId": {
                               "Ref": "lambdaIOVPCPublicSubnet2NATGateway49DC45C1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "PrivateSubnet3": {
+                    "id": "PrivateSubnet3",
+                    "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3",
+                    "children": {
+                      "Subnet": {
+                        "id": "Subnet",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3/Subnet",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                          "aws:cdk:cloudformation:props": {
+                            "cidrBlock": "10.0.160.0/19",
+                            "vpcId": {
+                              "Ref": "lambdaIOVPC5F5AB3BC"
+                            },
+                            "availabilityZone": "us-west-2c",
+                            "mapPublicIpOnLaunch": false,
+                            "tags": [
+                              {
+                                "key": "aws-cdk:subnet-name",
+                                "value": "Private"
+                              },
+                              {
+                                "key": "aws-cdk:subnet-type",
+                                "value": "Private"
+                              },
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Acl": {
+                        "id": "Acl",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3/Acl"
+                      },
+                      "RouteTable": {
+                        "id": "RouteTable",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3/RouteTable",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                          "aws:cdk:cloudformation:props": {
+                            "vpcId": {
+                              "Ref": "lambdaIOVPC5F5AB3BC"
+                            },
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "RouteTableAssociation": {
+                        "id": "RouteTableAssociation",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3/RouteTableAssociation",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                          "aws:cdk:cloudformation:props": {
+                            "routeTableId": {
+                              "Ref": "lambdaIOVPCPrivateSubnet3RouteTableB41107C4"
+                            },
+                            "subnetId": {
+                              "Ref": "lambdaIOVPCPrivateSubnet3Subnet615C9B9E"
+                            }
+                          }
+                        }
+                      },
+                      "DefaultRoute": {
+                        "id": "DefaultRoute",
+                        "path": "ServiceTestStack/lambdaIO/VPC/PrivateSubnet3/DefaultRoute",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                          "aws:cdk:cloudformation:props": {
+                            "routeTableId": {
+                              "Ref": "lambdaIOVPCPrivateSubnet3RouteTableB41107C4"
+                            },
+                            "destinationCidrBlock": "0.0.0.0/0",
+                            "natGatewayId": {
+                              "Ref": "lambdaIOVPCPublicSubnet3NATGateway66AB5F86"
                             }
                           }
                         }
@@ -2260,6 +2373,29 @@
                       }
                     }
                   },
+                  "EfsMountTarget3": {
+                    "id": "EfsMountTarget3",
+                    "path": "ServiceTestStack/lambdaIO/MyEfsFileSystem/EfsMountTarget3",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                      "aws:cdk:cloudformation:props": {
+                        "fileSystemId": {
+                          "Ref": "lambdaIOMyEfsFileSystemBA84953E"
+                        },
+                        "securityGroups": [
+                          {
+                            "Fn::GetAtt": [
+                              "lambdaIOMyEfsFileSystemEfsSecurityGroupDEBA15C4",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetId": {
+                          "Ref": "lambdaIOVPCPrivateSubnet3Subnet615C9B9E"
+                        }
+                      }
+                    }
+                  },
                   "AccessPoint": {
                     "id": "AccessPoint",
                     "path": "ServiceTestStack/lambdaIO/MyEfsFileSystem/AccessPoint",
@@ -2414,6 +2550,9 @@
                             },
                             {
                               "Ref": "lambdaIOVPCPrivateSubnet2Subnet989859CD"
+                            },
+                            {
+                              "Ref": "lambdaIOVPCPrivateSubnet3Subnet615C9B9E"
                             }
                           ],
                           "securityGroupIds": [
@@ -2534,7 +2673,7 @@
                               "Ref": "lambdaIOhelloworldapiIO512496F6"
                             },
                             "deploymentId": {
-                              "Ref": "lambdaIOhelloworldapiIODeploymentE8F924BCb5ec0452f4a1176eeb38ce1c43649a8a"
+                              "Ref": "lambdaIOhelloworldapiIODeploymentE8F924BCf720f3da25b8b550064d2d947f97290f"
                             },
                             "stageName": "prod"
                           }
@@ -2576,15 +2715,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaIOhelloworldapiIO512496F6"
                                       },
@@ -2621,15 +2752,7 @@
                                       {
                                         "Ref": "AWS::Partition"
                                       },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
+                                      ":execute-api:us-west-2:878687028155:",
                                       {
                                         "Ref": "lambdaIOhelloworldapiIO512496F6"
                                       },
@@ -2667,11 +2790,7 @@
                                         {
                                           "Ref": "AWS::Partition"
                                         },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
+                                        ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
                                         {
                                           "Fn::GetAtt": [
                                             "lambdaIOLambdaFileSystemD0DC67D0",
@@ -2702,10 +2821,6 @@
               "Default": {
                 "id": "Default",
                 "path": "ServiceTestStack/CDKMetadata/Default"
-              },
-              "Condition": {
-                "id": "Condition",
-                "path": "ServiceTestStack/CDKMetadata/Condition"
               }
             }
           }

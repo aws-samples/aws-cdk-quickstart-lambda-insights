@@ -4,6 +4,7 @@ import * as lambda from "@aws-cdk/aws-lambda";
 import * as s3 from "@aws-cdk/aws-s3";
 import * as efs from "@aws-cdk/aws-efs";
 import * as ec2 from "@aws-cdk/aws-ec2";
+import * as iam from "@aws-cdk/aws-iam";
 
 export class LambdaMain extends core.Construct {
   constructor(scope: core.Construct, id: string) {
@@ -12,9 +13,14 @@ export class LambdaMain extends core.Construct {
     const bucket = new s3.Bucket(this, "LambdaStore");
     
     const duration = core.Duration.seconds(900);
+    const lambdarole = new iam.Role(this, "lambdaRole", {assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com')});
+    lambdarole.addManagedPolicy({managedPolicyArn: 'arn:aws:iam::aws:policy/CloudWatchLambdaInsightsExecutionRolePolicy'});
+    lambdarole.addManagedPolicy({managedPolicyArn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'});
+    
 
-    const layerArn = `arn:aws:lambda:us-west-2:907985872988:layer:LambdaInsightsExtensionBeta:1`;
+    const layerArn = `arn:aws:lambda:us-west-2:580247275435:layer:LambdaInsightsExtension:2`;
     const layer = lambda.LayerVersion.fromLayerVersionArn(this, `LayerFromArn`, layerArn);
+
     
     const myVpc = new ec2.Vpc(this, 'VPC');
     
@@ -50,6 +56,8 @@ export class LambdaMain extends core.Construct {
       code: lambda.Code.asset("resources"),
       handler: "lambda_filesystem.handler",
       layers: [layer],
+      role: lambdarole,
+      memorySize: 256,
       timeout: duration,
       vpc: myVpc,
       securityGroups: [securitygroup],

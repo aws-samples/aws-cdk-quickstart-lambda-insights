@@ -10,6 +10,7 @@
  * `cdk deploy`      Deploy the Stack
 
 
+
 The cdk will deploy below architecture.  At high level-
 
 * We will deploy 4 “Hello World” Lambda functions which can be triggered by corresponding 4 API Gateway end points. 
@@ -19,12 +20,15 @@ The cdk will deploy below architecture.  At high level-
     * Performing cpu intensive operations. We are calculating Fibonacci sequences.
     * Performing memory intensive operations. We will do that by loading arrays during function runtime
 
+
 Image of the Architecture
 
 
 Go to the Cloudformation console and search for ServiceTestStack and check Outputs. Take a note of the 4 API end points.  To generate data for lambda insights, we will use CloudWatch synthetics to make call to each API endpoint every minute. 
 
+
 Image of Cloudformation ServiceTestStack
+
 
 Setup CloudWatch Synthetics Canaries to call the API end points every minute. The instructions to create a Canary are mentioned at https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Create.html.
 Once the 4 canaries are setup for each API End point, they should look like below-

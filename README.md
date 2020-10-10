@@ -13,31 +13,27 @@
 
 The cdk will deploy below architecture.  At high level-
 
-* We will deploy 4 “Hello World” Lambda functions which can be triggered by corresponding 4 API Gateway end points. 
-* The first Lambda is a vanilla Hello World function. 
-* Each of the other three Lambdas are performing additional tasks such as- 
-    * Performing IO intensive operations by writing to Amazon EFS. 
+* We will deploy 4 “Hello World” Lambda functions which can be triggered by corresponding 4 API Gateway end points.
+* The first Lambda is a vanilla Hello World function.
+* Each of the other three Lambdas are performing additional tasks such as-
+    * Performing IO intensive operations by writing to Amazon EFS.
     * Performing cpu intensive operations. We are calculating Fibonacci sequences.
     * Performing memory intensive operations. We will do that by loading arrays during function runtime
 
+![Architecture](/images/architecture.png)
 
-Image of the Architecture
+Go to the Cloudformation console and search for ServiceTestStack and check Outputs. Take a note of the 4 API end points.  To generate data for lambda insights, we will use CloudWatch synthetics to make call to each API endpoint every minute.
 
-
-Go to the Cloudformation console and search for ServiceTestStack and check Outputs. Take a note of the 4 API end points.  To generate data for lambda insights, we will use CloudWatch synthetics to make call to each API endpoint every minute. 
-
-
-Image of Cloudformation ServiceTestStack
-
+![CloudFormation](/images/CloudFormation-outputs.png)
 
 Setup CloudWatch Synthetics Canaries to call the API end points every minute. The instructions to create a Canary are mentioned at https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Create.html.
 Once the 4 canaries are setup for each API End point, they should look like below-
 
-Image of CloudWatch Synthetics Canaries
+![CloudWatch Synthetics](/images/CloudWatch-Synthetics.png)
 
-We can go ahead and start looking at lambda insights in CloudWatch. To do this, go to CloudWatch and click on Multi-Function under Lambda Insights. Here, we can observe metrics for the four lambda functions which were created by the cdk. 
+We can go ahead and start looking at lambda insights in CloudWatch. To do this, go to CloudWatch and click on Multi-Function under Lambda Insights. Here, we can observe metrics for the four lambda functions which were created by the cdk.
 
-Image of CloudWatch Lambda Insights
+![CloudWatch-Lambda](/images/CloudWatch-Lambda.png)
 
 
 # Deleting/Destroying the Stack

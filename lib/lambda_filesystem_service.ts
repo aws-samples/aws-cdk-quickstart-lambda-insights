@@ -19,7 +19,6 @@ export class LambdaMain extends core.Construct {
     lambdarole.addManagedPolicy({managedPolicyArn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole'});
     
 
-//    const layerArn = `arn:aws:lambda:us-west-2:580247275435:layer:LambdaInsightsExtension:2`;
     const layerArn = "arn:aws:lambda:"+ process.env.CDK_DEFAULT_REGION +":580247275435:layer:LambdaInsightsExtension:2";    
     const layer = lambda.LayerVersion.fromLayerVersionArn(this, `LayerFromArn`, layerArn);
 

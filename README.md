@@ -2,7 +2,6 @@
 
 
 
-
 ## Setup Stack
 
  * `cdk bootstrap`   CDK Bootstrapping

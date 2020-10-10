@@ -10,14 +10,7 @@
 
 
 
-The cdk will deploy below architecture.  At high level-
-
-* We will deploy 4 “Hello World” Lambda functions which can be triggered by corresponding 4 API Gateway end points.
-* The first Lambda is a vanilla Hello World function.
-* Each of the other three Lambdas are performing additional tasks such as-
-    * Performing IO intensive operations by writing to Amazon EFS.
-    * Performing cpu intensive operations. We are calculating Fibonacci sequences.
-    * Performing memory intensive operations. We will do that by loading arrays during function runtime
+The cdk will deploy below architecture.
 
 ![Architecture](/images/architecture.png)
 

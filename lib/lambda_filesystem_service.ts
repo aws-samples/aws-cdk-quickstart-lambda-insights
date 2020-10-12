@@ -10,7 +10,9 @@ export class LambdaMain extends core.Construct {
   constructor(scope: core.Construct, id: string) {
     super(scope, id);
 
-    const bucket = new s3.Bucket(this, "LambdaStore");
+    const bucket = new s3.Bucket(this, "LambdaStore", {
+      removalPolicy: core.RemovalPolicy.DESTROY,
+    });
     
     const duration = core.Duration.seconds(900);
     const lambdarole = new iam.Role(this, "lambdaRole", {assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com')});
@@ -30,6 +32,7 @@ export class LambdaMain extends core.Construct {
      encrypted: true,
      lifecyclePolicy: efs.LifecyclePolicy.AFTER_14_DAYS,
      performanceMode: efs.PerformanceMode.GENERAL_PURPOSE,
+     removalPolicy: core.RemovalPolicy.DESTROY,
      throughputMode: efs.ThroughputMode.BURSTING
      });
      

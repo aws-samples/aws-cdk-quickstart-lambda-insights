@@ -4,7 +4,7 @@
 ## Setup Stack
 
 ```
-$ git clone   
+$ git clone https://git-codecommit.us-west-2.amazonaws.com/v1/repos/aws-cdk-quickstart-lambda-insights
 $ npm install 
 $ cd resources && npm install 
 $ cdk bootstrap   

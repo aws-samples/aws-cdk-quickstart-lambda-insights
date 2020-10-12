@@ -1,6 +1,6 @@
 # CDK TypeScript project for Lambda Insights.
 
-# Why?
+## Why?
 
 Use this cdk project to test AWS CloudWatch Lambda Insights.
 
@@ -31,7 +31,7 @@ Once the 4 canaries are setup for each API End point, they should look like belo
 We can go ahead and start looking at lambda insights in CloudWatch. To do this, go to CloudWatch and click on Multi-Function under Lambda Insights. Here, we can observe metrics for the four lambda functions which were created by the cdk.
 ![CloudWatch-Lambda](/images/CloudWatch-Lambda.png)
 
-# Deleting/Destroying the Stack
+## Deleting/Destroying the Stack
 
 ```
 $ cdk destroy

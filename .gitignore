@@ -1,0 +1,10 @@
+# CDK Context & Staging files
+cdk.context.json
+.cdk.staging/
+cdk.out/
+*.tabl.json
+
+# Local state files & OS specifics
+.DS_Store
+node_modules/
+

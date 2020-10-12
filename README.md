@@ -1,5 +1,8 @@
 # CDK TypeScript project for Lambda Insights.
 
+# Why?
+
+Use this cdk project to test AWS CloudWatch Lambda Insights.
 
 ## Setup Stack
 

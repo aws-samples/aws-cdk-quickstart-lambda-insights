@@ -3,13 +3,14 @@
 
 ## Setup Stack
 
- * `git clone`   Clone the git repo
- * `npm install` Install node depedencies and packages
- * `cd resources && npm install` Install node depedencies and packages in resources directory
- * `cdk bootstrap`   CDK Bootstrapping
- * `cdk synth`       Emits the synthesized CloudFormation template
- * `cdk deploy`      Deploy the Stack
-
+```
+$ git clone   
+$ npm install 
+$ cd resources && npm install 
+$ cdk bootstrap   
+$ cdk synth       
+$ cdk deploy      
+```
 
 The cdk will deploy below architecture.
 
@@ -28,5 +29,8 @@ We can go ahead and start looking at lambda insights in CloudWatch. To do this, 
 ![CloudWatch-Lambda](/images/CloudWatch-Lambda.png)
 
 # Deleting/Destroying the Stack
- * `cdk destroy`
- * `Delete the Canaries in CloudWatch Synthetics`
+
+```
+$ cdk destroy
+```
+Delete the Canaries in CloudWatch Synthetics

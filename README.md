@@ -33,4 +33,5 @@ We can go ahead and start looking at lambda insights in CloudWatch. To do this, 
 ```
 $ cdk destroy
 ```
+
 Delete the Canaries in CloudWatch Synthetics

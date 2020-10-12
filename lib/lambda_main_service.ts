@@ -24,7 +24,7 @@ export class LambdaMain extends core.Construct {
       handler: "lambda_main.handler",
       layers: [layer],
       role: lambdarole,
-      memorySize: 256,
+      memorySize: 512,
       timeout: duration,
       environment: {
         BUCKET: bucket.bucketName

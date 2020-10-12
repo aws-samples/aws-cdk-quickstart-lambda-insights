@@ -1,7 +1,6 @@
 # CDK TypeScript project for Lambda Insights.
 
 
-
 ## Setup Stack
 
  * `cdk bootstrap`   CDK Bootstrapping

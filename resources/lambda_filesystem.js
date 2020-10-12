@@ -35,9 +35,9 @@ fs.writeFile("/tmp/test", "Hey there!", function(err) {
 const output_a = a.join("\n");
 const output_b = b.join("\n");
 
-// write the output_b to the EFS 25 times
+// write the output_b to the EFS 50 times
 
-for (var q = 0; q < 10; q++) {
+for (var q = 0; q < 50; q++) {
      
      var randomfileA = uniqueFilename('/mnt/lambda', 'testingA');
      var randomfileB = uniqueFilename('/mnt/lambda', 'testingB');
@@ -59,7 +59,7 @@ for (var q = 0; q < 10; q++) {
 
 }
 
-console.log("The array b was saved on EFS 15 times !");
+console.log("The array b was saved on EFS 50 times !");
 // Code block to show CPU usage during lambda execution. We are performing an operation which takes time and CPU cycles.
 
 //fibo(40);
@@ -69,7 +69,7 @@ const response = {
     headers: {
         "x-custom-header": "My Header Value",
     },
-    body: JSON.stringify({message: "Hello World!"
+    body: JSON.stringify({message: "Hello World - Lambda EFS!"
     }),
 };
 callback(null, response);

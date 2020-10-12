@@ -48,7 +48,7 @@ export class LambdaMain extends core.Construct {
   },
 });
 
-   // Create a custome security group in the newly created VPC and allow ingress and egress traffic fromo 0.0.0.0/0 for demo purposes     
+   // Create a custome security group in the newly created VPC and allow ingress and egress traffic from 0.0.0.0/0 for demo purposes     
      const securitygroup = new ec2.SecurityGroup(this, 'SecurityGroup', {vpc: myVpc,});
      securitygroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.allTraffic() );
 
@@ -58,7 +58,7 @@ export class LambdaMain extends core.Construct {
       handler: "lambda_filesystem.handler",
       layers: [layer],
       role: lambdarole,
-      memorySize: 256,
+      memorySize: 512,
       timeout: duration,
       vpc: myVpc,
       securityGroups: [securitygroup],

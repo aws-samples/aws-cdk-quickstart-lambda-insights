@@ -10,7 +10,7 @@ const response = {
     headers: {
         "x-custom-header": "My Header Value",
     },
-    body: JSON.stringify({message: "Hello World!"
+    body: JSON.stringify({message: "Hello World - CPU!"
     }),
 };
 callback(null, response);

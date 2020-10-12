@@ -28,7 +28,7 @@ const response = {
     headers: {
         "x-custom-header": "My Header Value",
     },
-    body: JSON.stringify({message: "Hello World!"
+    body: JSON.stringify({message: "Hello World - Memory!"
     }),
 };
 callback(null, response);

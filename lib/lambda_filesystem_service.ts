@@ -61,7 +61,7 @@ export class LambdaMain extends core.Construct {
       handler: "lambda_filesystem.handler",
       layers: [layer],
       role: lambdarole,
-      memorySize: 512,
+      memorySize: 1024,
       timeout: duration,
       vpc: myVpc,
       securityGroups: [securitygroup],

@@ -1,9 +1,12 @@
 const AWS = require('aws-sdk');
-//const AWSXRay = require('aws-xray-sdk-core');
+const AWSXRay = require('aws-xray-sdk-core');
 const fs = require('fs');
 const uniqueFilename = require('unique-filename');
 
 exports.handler = function(event, context, callback) {
+    
+const segment = AWSXRay.getSegment();
+const subsegment = segment.addNewSubsegment("ExpensiveCode");
 
 // Code block to consume memory during runtime of the lambda
 var a = [];
@@ -58,6 +61,8 @@ for (var q = 0; q < 50; q++) {
  
 
 }
+
+subsegment.close();
 
 console.log("The array b was saved on EFS 50 times !");
 // Code block to show CPU usage during lambda execution. We are performing an operation which takes time and CPU cycles.

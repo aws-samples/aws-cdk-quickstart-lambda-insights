@@ -1,7 +1,10 @@
 const AWS = require('aws-sdk');
-//const AWSXRay = require('aws-xray-sdk-core');
+const AWSXRay = require('aws-xray-sdk-core');
 
 exports.handler = function(event, context, callback) {
+    
+const segment = AWSXRay.getSegment();
+const subsegment = segment.addNewSubsegment("ExpensiveCode");
 
 // Code block to consume memory during runtime of the lambda
 var a = [];
@@ -20,6 +23,8 @@ for (var p = 0; p < 100000; p++) {
     a.push(d);
   b.push(d);
 } 
+
+subsegment.close();
 
 //fibo(40);
 console.log(event);

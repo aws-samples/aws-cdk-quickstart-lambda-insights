@@ -61,6 +61,7 @@ export class LambdaMain extends core.Construct {
       handler: "lambda_filesystem.handler",
       layers: [layer],
       role: lambdarole,
+      tracing: lambda.Tracing.ACTIVE,
       memorySize: 1024,
       timeout: duration,
       vpc: myVpc,

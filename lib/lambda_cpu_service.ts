@@ -27,6 +27,7 @@ export class LambdaMain extends core.Construct {
       handler: "lambda_cpu.handler",
       layers: [layer],
       role: lambdarole,
+      tracing: lambda.Tracing.ACTIVE,
       memorySize: 128,
       timeout: duration,
       environment: {

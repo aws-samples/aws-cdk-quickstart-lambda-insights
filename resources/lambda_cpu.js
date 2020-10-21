@@ -1,9 +1,13 @@
 const AWS = require('aws-sdk');
-//const AWSXRay = require('aws-xray-sdk-core');
+const AWSXRay = require('aws-xray-sdk-core');
 
 exports.handler = function(event, context, callback) {
-
+    
+const segment = AWSXRay.getSegment();
+const subsegment = segment.addNewSubsegment("ExpensiveCode");
 fibo(40);
+subsegment.close();
+
 console.log(event);
 const response = {
     statusCode: 200,

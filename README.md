@@ -7,12 +7,12 @@ Use this cdk project to test AWS CloudWatch Lambda Insights.
 ## Setup Stack
 
 ```
-$ git clone https://git-codecommit.us-west-2.amazonaws.com/v1/repos/aws-cdk-quickstart-lambda-insights  (this will be changed to aws-samples public link before being published out)
+$ git clone https://github.com/aws-samples/aws-cdk-quickstart-lambda-insights.git
 $ npm install 
 $ cd resources && npm install 
 $ cdk bootstrap   
 $ cdk synth       
-$ cdk deploy      
+$ cdk deploy
 ```
 
 The cdk will deploy below architecture.

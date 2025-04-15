@@ -1,15 +1,12 @@
-exports.handler = async function(event, context) {
-  console.log('Lambda invoked: Hello World');
+const { captureAsyncFunc } = require('aws-xray-sdk-core');
+
+exports.handler = async (event) => {
+  // Implement Lambda function with proper X-Ray tracing
+  console.log('Event received:', JSON.stringify(event));
   
-  // Simple Hello World response
   const response = {
     statusCode: 200,
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Hello World"
-    }),
+    body: JSON.stringify('Hello from Lambda Insights Demo!'),
   };
   
   return response;

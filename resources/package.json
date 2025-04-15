@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-xray-sdk-core": "^3.2.0",
+    "aws-xray-sdk-core": "^3.5.3",
     "fs": "0.0.1-security",
-    "unique-filename": "^1.1.1"
+    "unique-filename": "^3.0.0"
   }
 }

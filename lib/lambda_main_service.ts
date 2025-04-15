@@ -4,7 +4,7 @@ import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as ssm from 'aws-cdk-lib/aws-ssm';
+import { getLambdaInsightsLayerArn } from './lambda_insights_layer';
 
 export class LambdaMain extends Construct {
   constructor(scope: Construct, id: string) {
@@ -30,12 +30,8 @@ export class LambdaMain extends Construct {
       iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole')
     );
 
-    // Use SSM parameter for the latest Lambda Insights layer
-    const layerArn = ssm.StringParameter.valueForStringParameter(
-      this,
-      '/aws/service/aws-lambda-insights/extension/default'
-    );
-    
+    // Get the Lambda Insights layer ARN for the current region
+    const layerArn = getLambdaInsightsLayerArn(cdk.Stack.of(this).region);
     const layer = lambda.LayerVersion.fromLayerVersionArn(this, `LayerFromArn`, layerArn);
 
     const handler = new lambda.Function(this, "LambdaMain", {
@@ -50,7 +46,6 @@ export class LambdaMain extends Construct {
       environment: {
         BUCKET: bucket.bucketName,
         POWERTOOLS_SERVICE_NAME: 'LambdaMain',
-        POWERTOOLS_METRICS_NAMESPACE: 'LambdaInsightsDemo',
         AWS_LAMBDA_EXEC_WRAPPER: '/opt/extensions/lambda-insights-extension'
       }
     });

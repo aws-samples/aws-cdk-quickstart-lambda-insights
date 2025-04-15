@@ -45,8 +45,7 @@ export class LambdaMain extends Construct {
       timeout: duration,
       environment: {
         BUCKET: bucket.bucketName,
-        POWERTOOLS_SERVICE_NAME: 'LambdaMain',
-        AWS_LAMBDA_EXEC_WRAPPER: '/opt/extensions/lambda-insights-extension'
+        POWERTOOLS_SERVICE_NAME: 'LambdaMain'
       }
     });
     

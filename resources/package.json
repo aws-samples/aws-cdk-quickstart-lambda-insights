@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1531.0",
+    "@aws-sdk/client-s3": "^3.515.0",
+    "@aws-sdk/client-dynamodb": "^3.515.0",
+    "@aws-sdk/client-sns": "^3.515.0",
+    "@aws-sdk/client-sqs": "^3.515.0",
     "aws-xray-sdk-core": "^3.5.3",
     "fs": "0.0.1-security",
     "unique-filename": "^3.0.0"

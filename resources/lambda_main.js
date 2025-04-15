@@ -1,8 +1,15 @@
-const AWS = require('aws-sdk');
+// Import specific AWS SDK v3 clients as needed
+const { S3Client } = require('@aws-sdk/client-s3');
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+const { SNSClient } = require('@aws-sdk/client-sns');
+const { SQSClient } = require('@aws-sdk/client-sqs');
 const AWSXRay = require('aws-xray-sdk-core');
 
-// Instrument AWS SDK with X-Ray
-const awsSDK = AWSXRay.captureAWS(AWS);
+// Initialize and instrument AWS SDK v3 clients with X-Ray
+const s3Client = AWSXRay.captureAWSv3Client(new S3Client({ region: process.env.AWS_REGION }));
+const dynamoClient = AWSXRay.captureAWSv3Client(new DynamoDBClient({ region: process.env.AWS_REGION }));
+const snsClient = AWSXRay.captureAWSv3Client(new SNSClient({ region: process.env.AWS_REGION }));
+const sqsClient = AWSXRay.captureAWSv3Client(new SQSClient({ region: process.env.AWS_REGION }));
 
 exports.handler = async function(event, context) {
   console.log('Event:', JSON.stringify(event, null, 2));

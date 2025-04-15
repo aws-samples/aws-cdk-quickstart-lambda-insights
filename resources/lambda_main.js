@@ -1,24 +1,13 @@
-const AWS = require('aws-sdk');
-//const AWSXRay = require('aws-xray-sdk-core');
+const { captureAsyncFunc } = require('aws-xray-sdk-core');
 
-exports.handler = function(event, context, callback) {
-
-console.log(event);
-const response = {
+exports.handler = async (event) => {
+  // Implement Lambda function with proper X-Ray tracing
+  console.log('Event received:', JSON.stringify(event));
+  
+  const response = {
     statusCode: 200,
-    headers: {
-        "x-custom-header": "My Header Value",
-    },
-    body: JSON.stringify({message: "Hello World!"
-    }),
+    body: JSON.stringify('Hello from Lambda Insights Demo!'),
+  };
+  
+  return response;
 };
-callback(null, response);
-};
-
-
-
-
-
-
-
-

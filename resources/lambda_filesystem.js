@@ -1,87 +1,83 @@
-const AWS = require('aws-sdk');
+// Import specific AWS SDK v3 clients as needed
+const { S3Client } = require('@aws-sdk/client-s3');
 const AWSXRay = require('aws-xray-sdk-core');
 const fs = require('fs');
 const uniqueFilename = require('unique-filename');
+const { promisify } = require('util');
 
-exports.handler = function(event, context, callback) {
+// Convert fs methods to promises
+const writeFileAsync = promisify(fs.writeFile);
+
+// Initialize and instrument AWS SDK v3 clients with X-Ray
+const s3Client = AWSXRay.captureAWSv3Client(new S3Client({ region: process.env.AWS_REGION }));
+
+exports.handler = async function(event, context) {
     
-const segment = AWSXRay.getSegment();
-const subsegment = segment.addNewSubsegment("ExpensiveCode");
+  const segment = AWSXRay.getSegment();
+  const subsegment = segment.addNewSubsegment("ExpensiveCode");
+  
+  try {
+    // Code block to consume memory during runtime of the lambda
+    var a = [];
+    var b = [];
 
-// Code block to consume memory during runtime of the lambda
-var a = [];
-var b = [];
-
-class SimpleClass {
-  constructor(text){
-    this.text = text;
-  }
-}
-
-  var c = Math.random().toString();
-  var d = new SimpleClass(c);
-
-for (var p = 0; p < 100000; p++) {
-    a.push(d);
-  b.push(d);
-} 
-
-// Code to generate IO activity. Start by writing one sample file to disk
-fs.writeFile("/tmp/test", "Hey there!", function(err) {
-    if(err) {
-        return console.log(err);
+    class SimpleClass {
+      constructor(text){
+        this.text = text;
+      }
     }
 
+    var c = Math.random().toString();
+    var d = new SimpleClass(c);
+
+    for (var p = 0; p < 100000; p++) {
+      a.push(d);
+      b.push(d);
+    } 
+
+    // Code to generate IO activity. Start by writing one sample file to disk
+    await writeFileAsync("/tmp/test", "Hey there!");
     console.log("The file was saved!");
-});
 
-const output_a = a.join("\n");
-const output_b = b.join("\n");
+    const output_a = a.join("\n");
+    const output_b = b.join("\n");
 
-// write the output_b to the EFS 50 times
-
-for (var q = 0; q < 50; q++) {
-     
-     var randomfileA = uniqueFilename('/mnt/lambda', 'testingA');
-     var randomfileB = uniqueFilename('/mnt/lambda', 'testingB');
-     
-     fs.writeFile(randomfileA, output_a, function(err) {
-    if(err) {
-        return console.log(err);
+    // write the output_b to the EFS 50 times
+    const writePromises = [];
+    for (var q = 0; q < 50; q++) {
+      var randomfileA = uniqueFilename('/mnt/lambda', 'testingA');
+      var randomfileB = uniqueFilename('/mnt/lambda', 'testingB');
+      
+      writePromises.push(writeFileAsync(randomfileA, output_a));
+      writePromises.push(writeFileAsync(randomfileB, output_b));
     }
 
-});
+    await Promise.all(writePromises);
+    console.log("The array b was saved on EFS 50 times!");
 
-     fs.writeFile(randomfileB, output_b, function(err) {
-    if(err) {
-        return console.log(err);
-    }
+    subsegment.close();
 
-});
- 
-
-}
-
-subsegment.close();
-
-console.log("The array b was saved on EFS 50 times !");
-// Code block to show CPU usage during lambda execution. We are performing an operation which takes time and CPU cycles.
-
-//fibo(40);
-console.log(event);
-const response = {
-    statusCode: 200,
-    headers: {
+    return {
+      statusCode: 200,
+      headers: {
         "x-custom-header": "My Header Value",
-    },
-    body: JSON.stringify({message: "Hello World - Lambda EFS!"
-    }),
-};
-callback(null, response);
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Hello World - Lambda EFS!",
+        timestamp: new Date().toISOString()
+      }),
+    };
+  } catch (error) {
+    subsegment.addError(error);
+    subsegment.close();
+    throw error;
+  }
 };
 
 function fibo(n) { 
-    if (n < 2)
-        return 1;
-    else   return fibo(n - 2) + fibo(n - 1);
+  if (n < 2)
+    return 1;
+  else   
+    return fibo(n - 2) + fibo(n - 1);
 }
